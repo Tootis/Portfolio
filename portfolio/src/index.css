@@ -2,15 +2,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('../../portfolio/src/assets/picture/CharcoalBackground.png');
+  background-image: url('../../portfolio/src/assets/picture/CharcoalBackground.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   padding: 20px;
   color: #ffffffc2;
-  font-family: 'Sour Gummy', sans-serif;
-}
-
-code {
-  font-family: 'Sour Gummy', sans-serif;
-}
+  font-family: "Sour Gummy", sans-serif;
+  font-optical-sizing: auto;
+  }
