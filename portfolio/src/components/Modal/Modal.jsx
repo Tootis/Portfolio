@@ -24,18 +24,33 @@ const Modal = () => {
       <div className={`modal-container ${isOpen ? "open" : "hide"}`}>
         <nav className="modal-nav">
           <div className="modal-link">
-            <a href="/" className={location.pathname === "/" ? "active" : ""} onClick={toggleModal}>
-              Accueil
+            <a
+              href="/" 
+              className={location.pathname === "/" ? "active" : ""} 
+              onClick={toggleModal}>
+              <div className="link-content">
+                <p>Accueil</p>
+              </div>
             </a>
           </div>
           <div className="modal-link">
-            <a href="/about" className={location.pathname === "/about" ? "active" : ""} onClick={toggleModal}>
-              À Propos de moi
+            <a 
+              href="/about" 
+              className={location.pathname === "/about" ? "active" : ""} 
+              onClick={toggleModal}>
+              <div className="link-content">
+                <p>À Propos de moi</p>
+              </div>
             </a>
           </div>
           <div className="modal-link">
-            <a href="/projects" className={location.pathname === "/projects" ? "active" : ""} onClick={toggleModal}>
-              Projets
+            <a 
+              href="/projects" 
+              className={location.pathname === "/projects" ? "active" : ""} 
+              onClick={toggleModal}>
+              <div className="link-content">
+                <p>Projets</p>
+              </div>
             </a>
           </div>
         </nav>

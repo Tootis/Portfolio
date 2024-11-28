@@ -3,7 +3,8 @@ import elec from '../../assets/picture/elec.jpg';
 import tech from '../../assets/picture/tech.jpg';
 import objective from '../../assets/picture/Objective.jpg';
 import chistera from '../../assets/picture/chistera.jpg';
-import '../About/About.scss';
+import '../About/AboutStyle.scss';
+import '../Home/HomeStyle.scss';
 
 const AboutBlock = ({ imgSrc, altText, reverse, children }) => (
   <div className={`about-block ${reverse ? 'reverse' : ''}`}>

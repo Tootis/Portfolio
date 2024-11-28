@@ -1,10 +1,9 @@
 import React from 'react';
-import Modal from '../Modal/Modal';
+import '../Home/HomeStyle.scss';
 
 const Body = () => {
   return (
     <main className="body">
-      <Modal />
       <section id="accueil" className="section">
         <h1>Bienvenue sur mon portfolio</h1>
         <p>

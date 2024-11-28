@@ -1,25 +1,46 @@
-import React from 'react';
-
+import React from "react";
+import Carousel from "../Carousel/Carousel.jsx";
+import "../Home/HomeStyle.scss";
+import Image1 from "../../assets/picture/chistera.jpg";
 
 const Projects = () => {
-    return (
-        < >
-            <section id="projets" className="section">
-        <h2>Mes projets</h2>
-        <p>Découvrez mes projets réalisés :</p>
-        <ul>
-          <li><strong>Projet 1</strong>: Créez la page d'accueil d'une agence de voyage avec HTML & CSS</li>
-          <li><strong>Projet 2</strong>: Créez une page web dynamique avec JavaScript</li>
-          <li><strong>Projet 3</strong>: Planifiez le développement du site de votre client</li>
-          <li><strong>Projet 4</strong>: Débuggez et optimisez un site de photographe</li>
-          <li><strong>Projet 5</strong>: Créez une application web de location immobilière avec React</li>
-          <li><strong>Projet 6</strong>: Développez le back-end d'un site de notation de livres</li>
-          <li><strong>Projet 7</strong>: Application de gestion des tâches</li>
-          <li><strong>Projet 8</strong>: Portfolio de développeur</li>
-          <li><strong>Projet 9</strong>: Site du Chistera d'or</li>
-        </ul>
-      </section>
-        </>
-    );
-}
+  const projects = [
+    {
+      title: "Projet 1,2,5 et 7",
+      description: "Utilisation du HTML & CSS, JavaScript et React",
+      images: [Image1, Image1],
+    },
+    {
+      title: "Projet 3",
+      description: "Planifiez le développement",
+      images: [Image1, Image1],
+    },
+    {
+      title: "Projet 4 et 6",
+      description: "Débuggez et optimisez un site et back-end",
+      images: [Image1, Image1],
+    },
+  ];
+
+  return (
+    <section id="projets" className="projects-section">
+      <h2>Mes projets</h2>
+      <p>Découvrez mes projets réalisés :</p>
+      <ul className="projects-list">
+        {projects.map((project, index) => (
+          <li key={index} className="project-item">
+            <div className="project-carousel">
+              <Carousel images={project.images} />
+            </div>
+            <div className="project-text">
+              <strong>{project.title}</strong>
+              <p>{project.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
+
 export default Projects;
