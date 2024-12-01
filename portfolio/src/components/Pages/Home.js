@@ -1,5 +1,7 @@
 import React from 'react';
-import '../Home/HomeStyle.scss';
+import '../PagesStyle/HomeStyle.scss';
+import pictures from "../Layout/picture.jsx";
+import { Link } from 'react-router-dom';
 
 const Body = () => {
   return (
@@ -10,10 +12,23 @@ const Body = () => {
           Je suis un développeur débutant dans la création de sites web et
           d'applications interactives. J'aime beaucoup la partie Frontend et
           l'optimisation de site, et j'aimerais commencer par renforcer mes
-          points forts en priorité.
+          points forts en priorité.Voici quelques <Link to="/projects" className="link-projets"
+           aria-label="Voir mes projets">projets</Link> réalisés :
         </p>
-      </section>
-    </main>
+    <div className="carouselHome" role="region" aria-label="Carrousel de projets">
+      <div className="wrap">
+        {pictures.AllProjects.map((image, index) => (
+          <img 
+            key={index} 
+            src={image} 
+            alt={`Carrousel infini numéro ${index + 1}`} 
+            aria-label={`Image numéro ${index + 1} du carrousel`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
   );
 };
 

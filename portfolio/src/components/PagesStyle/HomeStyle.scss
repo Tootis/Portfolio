@@ -1,0 +1,42 @@
+.carouselHome {
+  overflow: hidden;
+  width: 90%;
+  padding-top: 5em;
+}
+
+.wrap {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 40vw;
+  justify-items: stretch;
+  animation: slide 50s linear infinite;
+}
+
+
+.wrap img {
+  width: 80%;
+  height: 60%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-585%);
+  }
+}
+@media (min-width: 501px) and (max-width: 1100px) {
+  .wrap {
+    grid-auto-columns: 60vw;
+  }
+}
+@media (max-width: 500px) {
+  .carouselHome {
+    padding-top: 2em;
+  }
+  
+  .wrap {
+    grid-auto-columns: 90vw;
+  }
+
+}

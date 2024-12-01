@@ -1,30 +1,71 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
 import "./CarouselStyle.scss";
 
 const Carousel = ({ images }) => {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: false,
-    dots: false,
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const toggleImage = (image, index) => {
+    if (currentImage === image) {
+      setIsOpen(false);
+      setCurrentImage(null);
+    } else {
+      setCurrentImage(image);
+      setCurrentIndex(index);
+      setIsOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setCurrentImage(null);
+  };
+
+  const nextImage = () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+    setCurrentImage(images[nextIndex]);
+    setCurrentIndex(nextIndex);
+  };
+
+  const prevImage = () => {
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    setCurrentImage(images[prevIndex]);
+    setCurrentIndex(prevIndex);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (e.target.classList.contains("overlay") || e.target.tagName === "IMG") {
+      handleClose();
+    }
   };
 
   return (
-    <div className="carousel">
-      <Slider {...settings}>
+    <div className="wrapper">
+      <div className="items">
         {images.map((image, index) => (
-          <div key={index} className="carousel-slide">
-            <img src={image} alt={`Slide ${index + 1}`} />
-          </div>
+          <div
+            key={index}
+            className="item"
+            onClick={() => toggleImage(image, index)}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
         ))}
-      </Slider>
+      </div>
+
+      {isOpen && (
+        <div className="overlay" onClick={handleOutsideClick}>
+          <div className="overlay-content">
+            <button onClick={prevImage}>&lt;</button>
+            <img
+              src={currentImage}
+              alt="Zoom sur un projet"
+              style={{ width: "80vw", height: "80vh", objectFit: "contain" }}
+            />
+            <button onClick={nextImage}>&gt;</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
