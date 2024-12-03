@@ -15,20 +15,29 @@ const Body = () => {
           points forts en priorité.Voici quelques <Link to="/projects" className="link-projets"
            aria-label="Voir mes projets">projets</Link> réalisés :
         </p>
-    <div className="carouselHome" role="region" aria-label="Carrousel de projets">
-      <div className="wrap">
-        {pictures.AllProjects.map((image, index) => (
-          <img 
-            key={index} 
-            src={image} 
-            alt={`Carrousel infini numéro ${index + 1}`} 
-            aria-label={`Image numéro ${index + 1} du carrousel`}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-</main>
+        <div className="carouselHome" role="region" aria-label="Carrousel de projets">
+          <div className="wrap">
+            {pictures.AllProjects.map((image, index) => (
+              <img 
+                key={index} 
+                src={image} 
+                alt={`Carrousel infini numéro ${index + 1}`} 
+                aria-label={`Image numéro ${index + 1} du carrousel`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section id="contact" className="contact-section">
+        <h2>Contactez-moi</h2>
+        <p>Si vous souhaitez me contacter, vous pouvez m'envoyer un e-mail ou m'appeler :</p>
+        <ul>
+          <li><strong>Email :</strong> <a href="mailto:berthelonbrice@gmail.com">berthelonbrice@gmail.com</a></li>
+          <li><strong>Téléphone :</strong> <a href="tel:0782084333">0782084333</a></li>
+        </ul>
+      </section>
+    </main>
   );
 };
 

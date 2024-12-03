@@ -7,11 +7,11 @@ const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const toggleImage = (image, index) => {
-    if (currentImage === image) {
+    if (currentImage === image.src) {
       setIsOpen(false);
       setCurrentImage(null);
     } else {
-      setCurrentImage(image);
+      setCurrentImage(image.src);
       setCurrentIndex(index);
       setIsOpen(true);
     }
@@ -24,18 +24,18 @@ const Carousel = ({ images }) => {
 
   const nextImage = () => {
     const nextIndex = (currentIndex + 1) % images.length;
-    setCurrentImage(images[nextIndex]);
+    setCurrentImage(images[nextIndex].src);
     setCurrentIndex(nextIndex);
   };
 
   const prevImage = () => {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    setCurrentImage(images[prevIndex]);
+    setCurrentImage(images[prevIndex].src);
     setCurrentIndex(prevIndex);
   };
 
   const handleOutsideClick = (e) => {
-    if (e.target.classList.contains("overlay") || e.target.tagName === "IMG") {
+    if (e.target.classList.contains("overlay")) {
       handleClose();
     }
   };
@@ -48,7 +48,7 @@ const Carousel = ({ images }) => {
             key={index}
             className="item"
             onClick={() => toggleImage(image, index)}
-            style={{ backgroundImage: `url(${image})` }}
+            style={{ backgroundImage: `url(${image.src})` }}
           ></div>
         ))}
       </div>
@@ -57,11 +57,16 @@ const Carousel = ({ images }) => {
         <div className="overlay" onClick={handleOutsideClick}>
           <div className="overlay-content">
             <button onClick={prevImage}>&lt;</button>
-            <img
-              src={currentImage}
-              alt="Zoom sur un projet"
-              style={{ width: "80vw", height: "80vh", objectFit: "contain" }}
-            />
+            <div className="image-container">
+              <img
+                src={currentImage}
+                alt={`Texte explicatif ${currentIndex + 1}`}
+                style={{ width: "80vw", height: "80vh", objectFit: "contain" }}
+              />
+              <div className="image-description">
+                {images[currentIndex].description}
+              </div>
+            </div>
             <button onClick={nextImage}>&gt;</button>
           </div>
         </div>
